@@ -21,6 +21,13 @@ public class Auricular extends Accesorio {
 		this.setPotenciaDeSalida(potenciaDeSalida);
 	}
 
+	public Auricular(TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+		this.setTipoConexion(tipoConexion);
+		this.setCompatibilidades(compatibilidades);
+		this.setColores("Verde");
+		this.setPotenciaDeSalida(500.4);
+	}
+
 	public Double getPotenciaDeSalida() {
 		return potenciaDeSalida;
 	}
@@ -35,6 +42,7 @@ public class Auricular extends Accesorio {
 		mensaje += "\n Tipo de Conexión: " + this.obtenerTipoConexion();
 		mensaje += "\n Compatible con: " + this.obtenerCompatibilidades();
 		mensaje += "\n Colores: " + this.getColores();
+		mensaje += "\n Potencia de Salida: " + this.getPotenciaDeSalida();
 		return mensaje;
 	}
 }

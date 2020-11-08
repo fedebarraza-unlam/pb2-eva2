@@ -4,14 +4,8 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-class AccesoriosTest {
+class AuricularTest {
 	
-	@Test
-	void auricularHeredaDeAccesorio() {
-		Auricular auricular = new Auricular();
-		Assert.assertTrue(auricular instanceof Accesorio);
-	}
-
 	@Test
 	void crearAuricular() {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
@@ -55,6 +49,7 @@ class AccesoriosTest {
 		mensaje += "\n Tipo de Conexión: Cable";
 		mensaje += "\n Compatible con: Computadora, Play Station 4";
 		mensaje += "\n Colores: Rojo";
+		mensaje += "\n Potencia de Salida: 200.2";
 		
 		Assert.assertEquals(mensaje, auricular.mostrarDetalle());
 	}
