@@ -7,11 +7,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unlam.pb2.eva2.productos.*;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Accesorio;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Auricular;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Compatibilidad;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Joystick;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.TipoConexion;
+import ar.edu.unlam.pb2.eva2.productos.accesorios.*;
 
 class ProductoTest {
 
