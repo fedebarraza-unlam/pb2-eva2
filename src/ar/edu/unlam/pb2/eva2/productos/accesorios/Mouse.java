@@ -9,7 +9,8 @@ public class Mouse extends Accesorio {
 		this.setBotonesAdicionales(0);
 	}
 	
-	public Mouse(TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+	public Mouse(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setBotonesAdicionales(0);
@@ -17,7 +18,7 @@ public class Mouse extends Accesorio {
 
 	@Override
 	public String mostrarDetalle() {
-		String mensaje = "Nombre Mouse: "; // TODO Usar propety Nombre de Producto
+		String mensaje = "Mouse: " + this.getNombre();
 		mensaje += "\n Tipo de Conexión: " + this.obtenerTipoConexion();
 		mensaje += "\n Compatible con: " + this.obtenerCompatibilidades();
 		mensaje += "\n Colores: " + this.getColores();

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Auricular extends Accesorio {
 	private Double potenciaDeSalida;
 
-
 	public Auricular(Double precio) {
 		this.setTipoConexion(TipoConexion.BLUETOOTH);
 		this.setCompatibilidades(null);
@@ -13,9 +12,9 @@ public class Auricular extends Accesorio {
 		this.setPotenciaDeSalida(500.4);
 		this.setPrecio(precio);
 	}
-	
-	public Auricular(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades, String colores,
-			Double precio, Double potenciaDeSalida) {
+
+	public Auricular(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades,
+			String colores, Double precio, Double potenciaDeSalida) {
 		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
@@ -24,7 +23,8 @@ public class Auricular extends Accesorio {
 		this.setPotenciaDeSalida(potenciaDeSalida);
 	}
 
-	public Auricular(TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+	public Auricular(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setColores("Verde");

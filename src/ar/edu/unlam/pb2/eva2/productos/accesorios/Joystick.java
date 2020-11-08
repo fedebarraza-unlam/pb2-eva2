@@ -8,8 +8,9 @@ public class Joystick extends Accesorio {
 	public Joystick() {
 		this.setTieneAnalogico(false);
 	}
-	
-	public Joystick(TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+
+	public Joystick(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setTieneAnalogico(false);
@@ -17,7 +18,7 @@ public class Joystick extends Accesorio {
 
 	@Override
 	public String mostrarDetalle() {
-		String mensaje = "Nombre Joystick: "; // TODO Usar propety Nombre de Producto
+		String mensaje = "Joystick: " + this.getNombre();
 		mensaje += "\n Tipo de Conexión: " + this.obtenerTipoConexion();
 		mensaje += "\n Compatible con: " + this.obtenerCompatibilidades();
 		mensaje += "\n Colores: " + this.getColores();
