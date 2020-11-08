@@ -1,12 +1,13 @@
 package ar.edu.unlam.pb2.eva2.productos;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import ar.edu.unlam.pb2.eva2.productos.accesorios.*;
 
 public class Consola extends Producto {
 
-	private ArrayList<Accesorio> accesorios;
+	private Collection<Accesorio> accesorios;
 
 	public Consola(String nombre, Double precio, Fabricante fabricante) {
 		setNombre(nombre);
@@ -15,7 +16,7 @@ public class Consola extends Producto {
 		this.accesorios = new ArrayList<Accesorio>();
 	}
 
-	public ArrayList<Accesorio> getAccesorios() {
+	public Collection<Accesorio> getAccesorios() {
 		return accesorios;
 	}
 
@@ -30,5 +31,17 @@ public class Consola extends Producto {
 		mensaje += "\n Cantidad de Accesorios: " + this.getAccesorios().size();
 		mensaje += "\n Precio: " + this.getPrecio();
 		return mensaje;
+	}
+
+	public Integer cantidadDeJoysticks() {
+		Integer joysticks = 0;
+
+		for (Accesorio accesorio : this.getAccesorios()) {
+			if (accesorio instanceof Joystick) {
+				joysticks++;
+			}
+		}
+
+		return joysticks;
 	}
 }
