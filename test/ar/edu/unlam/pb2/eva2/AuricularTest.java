@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unlam.pb2.eva2.productos.accesorios.*;
+
 class AuricularTest {
 	
 	@Test
@@ -11,7 +13,7 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PS4);
 		compatibilidades.add(Compatibilidad.PS5);
-		Auricular auricular = new Auricular(TipoConexion.BLUETOOTH, compatibilidades, "Rojo", 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.BLUETOOTH, compatibilidades, "Rojo", 1100.00, 200.2);
 		
 		Assert.assertNotEquals(null, auricular);
 	}
@@ -20,7 +22,7 @@ class AuricularTest {
 	void crearAuricularCompatibleConPC() {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
-		Auricular auricular = new Auricular(TipoConexion.CABLE, compatibilidades, "Rojo", 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
 		
 		Assert.assertNotEquals(null, auricular);
 		Assert.assertTrue(auricular.esCompatible(Compatibilidad.PC));
@@ -31,7 +33,7 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
 		compatibilidades.add(Compatibilidad.PS4);
-		Auricular auricular = new Auricular(TipoConexion.CABLE, compatibilidades, "Rojo", 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
 		
 		Assert.assertNotEquals(null, auricular);
 		Assert.assertTrue(auricular.esCompatible(Compatibilidad.PC));
@@ -43,13 +45,14 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
 		compatibilidades.add(Compatibilidad.PS4);
-		Auricular auricular = new Auricular(TipoConexion.CABLE, compatibilidades, "Rojo", 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
 		
-		String mensaje = "Nombre Auricular: "; // TODO Usar propety Nombre de Producto
+		String mensaje = "Auricular: Takawishi";
 		mensaje += "\n Tipo de Conexión: Cable";
 		mensaje += "\n Compatible con: Computadora, Play Station 4";
 		mensaje += "\n Colores: Rojo";
 		mensaje += "\n Potencia de Salida: 200.2";
+		mensaje += "\n Precio: $1200.0";
 		
 		Assert.assertEquals(mensaje, auricular.mostrarDetalle());
 	}

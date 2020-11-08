@@ -6,11 +6,13 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unlam.pb2.eva2.productos.accesorios.*;
+
 class AccesorioTest {
 
 	@Test
 	void auricularHeredaDeAccesorio() {
-		Auricular auricular = new Auricular();
+		Auricular auricular = new Auricular(1200.00);
 		Assert.assertTrue(auricular instanceof Accesorio);
 	}
 
@@ -19,7 +21,7 @@ class AccesorioTest {
 		Joystick joystick = new Joystick();
 		Assert.assertTrue(joystick instanceof Accesorio);
 	}
-	
+
 	@Test
 	void mouseHeredaDeAccesorio() {
 		Mouse mouse = new Mouse();
@@ -31,7 +33,7 @@ class AccesorioTest {
 		Teclado teclado = new Teclado();
 		Assert.assertTrue(teclado instanceof Accesorio);
 	}
-	
+
 	@Test
 	void mostrarDetalleAccesorios() {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
