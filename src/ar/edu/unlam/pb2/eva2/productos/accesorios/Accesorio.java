@@ -1,10 +1,11 @@
-package ar.edu.unlam.pb2.eva2;
+package ar.edu.unlam.pb2.eva2.productos.accesorios;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-//TODO: Que herede clase Producto (nombre, precio, etc)
-public abstract class Accesorio {
+import ar.edu.unlam.pb2.eva2.productos.Producto;
+
+public abstract class Accesorio extends Producto {
 	private TipoConexion tipoConexion;
 	private Collection<Compatibilidad> compatibilidades;
 	private String colores;
@@ -51,9 +52,9 @@ public abstract class Accesorio {
 			return "N/A";
 		}
 	}
-	
+
 	public Boolean esCompatible(Compatibilidad compatibilidad) {
-		for (Compatibilidad item : this.getCompatibilidades()) { 
+		for (Compatibilidad item : this.getCompatibilidades()) {
 			if (item.equals(compatibilidad)) {
 				return true;
 			}
@@ -85,6 +86,4 @@ public abstract class Accesorio {
 		}
 		return String.join(", ", listaDeCompatibilidad);
 	}
-
-	public abstract String mostrarDetalle();
 }
