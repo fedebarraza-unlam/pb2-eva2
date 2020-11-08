@@ -1,4 +1,4 @@
-package ar.edu.unlam.pb2.eva2;
+package ar.edu.unlam.pb2.eva2.usuarios;
 
 public class Consulta {
 	private String nombreUsuario;

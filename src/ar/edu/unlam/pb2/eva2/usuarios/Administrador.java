@@ -1,4 +1,4 @@
-package ar.edu.unlam.pb2.eva2;
+package ar.edu.unlam.pb2.eva2.usuarios;
 
 public class Administrador extends Persona {
 
@@ -6,7 +6,7 @@ public class Administrador extends Persona {
 
 	public Administrador(String nombre, String apellido, String password, String passwordReset, Integer DNI) {
 		super(nombre, apellido, password, passwordReset);
-		this.rol = RolUsuario.ADMINISTRADOR;
+		this.setRol(RolUsuario.ADMINISTRADOR);
 		this.DNI = DNI;
 	}
 
