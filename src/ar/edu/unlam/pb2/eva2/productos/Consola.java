@@ -11,7 +11,6 @@ public class Consola extends Producto {
 	public Consola(String nombre, Double precio, Fabricante fabricante) {
 		setNombre(nombre);
 		setPrecio(precio);
-		//setFechaFabricacion(fechaFabricacion);
 		setFabricante(fabricante);
 		this.accesorios = new ArrayList<Accesorio>();
 	}
