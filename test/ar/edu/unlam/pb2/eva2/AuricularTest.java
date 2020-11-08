@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Auricular;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Compatibilidad;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.TipoConexion;
+import ar.edu.unlam.pb2.eva2.productos.accesorios.*;
 
 class AuricularTest {
 	
