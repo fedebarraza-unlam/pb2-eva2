@@ -1,9 +1,10 @@
 package ar.edu.unlam.pb2.eva2.usuarios;
 
 import java.util.ArrayList;
+
 import ar.edu.unlam.pb2.eva2.productos.Producto;
 
-public class Carrito {
+public class Carrito{
 	private ArrayList<Producto> productos;
 	private Double importeTotal;
 
