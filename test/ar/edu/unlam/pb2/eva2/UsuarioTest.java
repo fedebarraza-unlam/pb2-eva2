@@ -1,79 +1,90 @@
 package ar.edu.unlam.pb2.eva2;
 
-import ar.edu.unlam.pb2.eva2.productos.Consola;
-import ar.edu.unlam.pb2.eva2.productos.Fabricante;
-import ar.edu.unlam.pb2.eva2.productos.Formato;
-import ar.edu.unlam.pb2.eva2.productos.Juego;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Auricular;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.Compatibilidad;
-import ar.edu.unlam.pb2.eva2.productos.accesorios.TipoConexion;
-import ar.edu.unlam.pb2.eva2.usuarios.Usuario;
+import ar.edu.unlam.pb2.eva2.productos.*;
+import ar.edu.unlam.pb2.eva2.tienda.Tienda;
+import ar.edu.unlam.pb2.eva2.usuarios.*;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-
-import org.junit.Test;
-
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class UsuarioTest {
+
+	private Tienda tienda;
+
+	@BeforeEach
+	public void setUp() {
+		tienda = new Tienda("Game Stop");
+
+		// Registrar algunos usuarios antes de empezar los tests
+		tienda.registrar(new Usuario("surace.l@gmail.com", "asssdd22"));
+		tienda.registrar(new Usuario("barraza.f@gmail.com", "00asssdd22"));
+		tienda.registrar(new Usuario("marin.d@gmail.com", "asssdsdd22"));
+		tienda.registrar(new Usuario("scalgia.l@gmail.com", "a111d22"));
+	}
+
 	@Test
 	public void queSePuedaRegistrarUnUsuario() {
-		Usuario user = new Usuario("Max", "Power", "123", "123", "mxpower@gmail.com");
-		assertTrue(user.register(user));
+		Usuario user = new Usuario("mxpower@gmail.com", "123", "Max", "Power");
+		assertTrue(tienda.registrar(user));
+	}
+	
+	@Test
+	public void queNoSePuedaRegistrarUnUsuarioDosVeces() {
+		Usuario user = new Usuario("mxpower@gmail.com", "123", "Max", "Power");
+		assertTrue(tienda.registrar(user));
+		assertFalse(tienda.registrar(user));
 	}
 
 	@Test
 	public void queSePuedaLoguearUnUsuario() {
-		Usuario user = new Usuario("Max", "Power", "123", "123", "mxpower@gmail.com");
-		assertTrue(user.register(user));
-		assertTrue(user.login("mxpower@gmail.com", "123"));
+		// Login Correcto
+		assertNotNull(tienda.login("surace.l@gmail.com", "asssdd22"));
 
-		Usuario user2 = new Usuario("Max", "Power", "123", "123", "mxpower2@gmail.com");
-		
-		assertFalse(user2.login("mxpower2@gmail.com", "123"));
+		// Login Incorrecto
+		assertNull(tienda.login("mxpower2@gmail.com", "123"));
 	}
-	
+
 	@Test
 	public void queElUsuarioPuedaAgregarOquitarProductoDelCarrito() {
-		Usuario user = new Usuario("Max", "Power", "123", "123", "mxpower@gmail.com");
-		assertTrue(user.register(user));
-		assertTrue(user.login("mxpower@gmail.com", "123"));
-		
-		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL);
-		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY);		
-		assertTrue(user.agregarProductoAlCarrito(j1)); //Agrega productos
-		assertTrue(user.agregarProductoAlCarrito(ps5));
-		
-		user.removerProductoDelCarrito(ps5);  //Remueve el producto.
-		
-		Integer productosEnCarrito = 1;		
-		assertEquals(productosEnCarrito, user.getCantidadDeProductosEnElCarrito());		
-	}	
-	
-	@Test
-	public void calculeElImporteTotalYlosProductosAgregados() {
-		//Calcular importe total:
-		Usuario user = new Usuario("Max", "Power", "123", "123", "mxpower@gmail.com");
-		assertTrue(user.register(user));
-		assertTrue(user.login("mxpower@gmail.com", "123"));
-		
+		// Login correcto
+		Usuario fede = (Usuario) tienda.login("barraza.f@gmail.com", "00asssdd22");
+		assertNotNull(fede);
+
 		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL);
 		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY);
-		
-		assertTrue(user.agregarProductoAlCarrito(j1)); 
-		assertTrue(user.agregarProductoAlCarrito(ps5));
-		
-		Double ve = 73900.0;
-		assertEquals(ve, (user.getImporteTotal()));
-		
-		//Contador de productos:		
-		Integer enCarrito = 2;		
-		assertEquals(enCarrito, (user.getCantidadDeProductosEnElCarrito()));
+		assertTrue(fede.agregarProductoAlCarrito(j1)); // Agrega productos
+		assertTrue(fede.agregarProductoAlCarrito(ps5));
+
+		fede.removerProductoDelCarrito(ps5); // Remueve el producto.
+
+		Integer productosEnCarrito = 1;
+		assertEquals(productosEnCarrito, fede.getCantidadDeProductosEnElCarrito());
 	}
-	
-	
+
+	@Test
+	public void calculeElImporteTotalYlosProductosAgregados() {
+		// Login correcto
+		Usuario dami = (Usuario) tienda.login("marin.d@gmail.com", "asssdsdd22");
+		assertNotNull(dami);
+
+		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL);
+		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY);
+
+		assertTrue(dami.agregarProductoAlCarrito(j1));
+		assertTrue(dami.agregarProductoAlCarrito(ps5));
+
+		Double ve = 73900.0;
+		assertEquals(ve, (dami.getImporteTotal()));
+
+		// Contador de productos:
+		Integer enCarrito = 2;
+		assertEquals(enCarrito, dami.getCantidadDeProductosEnElCarrito());
+	}
+
 }
