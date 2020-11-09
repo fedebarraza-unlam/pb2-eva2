@@ -4,7 +4,6 @@ public abstract class Producto {
 
 	private String nombre;
 	private Double precio;
-	private Double fechaFabricacion;
 	private Fabricante fabricante;
 
 	public String getNombre() {
@@ -23,13 +22,6 @@ public abstract class Producto {
 		this.precio = precio;
 	}
 
-	public Double getFechaFabricacion() {
-		return fechaFabricacion;
-	}
-
-	public void setFechaFabricacion(Double fechaFabricacion) {
-		this.fechaFabricacion = fechaFabricacion;
-	}
 
 	public Fabricante getFabricante() {
 		return fabricante;
