@@ -6,4 +6,5 @@ public enum Fabricante {
 	GENIUS,
 	MICROSOFT,
 	NINTENDO,
+	NAUGHTYDOG,
 }
