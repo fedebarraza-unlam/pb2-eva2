@@ -50,7 +50,7 @@ public class Usuario extends Persona {
 	
 	public String verDetalleDelProducto() {
 		if(logueado) {
-			return this.carrito.toString();
+			return "[Importe total: " + carrito.getImporteTotal() + "]";
 		} else
 			return "No se encuentra logueado";
 	}
@@ -68,5 +68,5 @@ public class Usuario extends Persona {
 		} else
 			return 0.0;		
 	}
-
+	
 }
