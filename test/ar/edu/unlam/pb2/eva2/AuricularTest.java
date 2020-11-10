@@ -13,7 +13,7 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PS4);
 		compatibilidades.add(Compatibilidad.PS5);
-		Auricular auricular = new Auricular("Takawishi", TipoConexion.BLUETOOTH, compatibilidades, "Rojo", 1100.00, 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.BLUETOOTH, compatibilidades, "Rojo", 1100.00, 200.2, 100);
 		
 		Assert.assertNotEquals(null, auricular);
 	}
@@ -22,7 +22,7 @@ class AuricularTest {
 	void crearAuricularCompatibleConPC() {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
-		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2, 100);
 		
 		Assert.assertNotEquals(null, auricular);
 		Assert.assertTrue(auricular.esCompatible(Compatibilidad.PC));
@@ -33,7 +33,7 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
 		compatibilidades.add(Compatibilidad.PS4);
-		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2, 100);
 		
 		Assert.assertNotEquals(null, auricular);
 		Assert.assertTrue(auricular.esCompatible(Compatibilidad.PC));
@@ -45,7 +45,7 @@ class AuricularTest {
 		ArrayList<Compatibilidad> compatibilidades = new ArrayList<Compatibilidad>();
 		compatibilidades.add(Compatibilidad.PC);
 		compatibilidades.add(Compatibilidad.PS4);
-		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2);
+		Auricular auricular = new Auricular("Takawishi", TipoConexion.CABLE, compatibilidades, "Rojo", 1200.00, 200.2, 100);
 		
 		String mensaje = "Auricular: Takawishi";
 		mensaje += "\n Tipo de Conexión: Cable";

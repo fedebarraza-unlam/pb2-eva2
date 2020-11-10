@@ -12,7 +12,7 @@ class AccesorioTest {
 
 	@Test
 	void auricularHeredaDeAccesorio() {
-		Auricular auricular = new Auricular(1200.00);
+		Auricular auricular = new Auricular(1200.00, 100);
 		Assert.assertTrue(auricular instanceof Accesorio);
 	}
 
@@ -41,9 +41,9 @@ class AccesorioTest {
 		compatibilidades.add(Compatibilidad.PS4);
 		Collection<Accesorio> accesorios = new ArrayList<Accesorio>();
 		accesorios.add(new Auricular("Sony 1120", TipoConexion.BLUETOOTH, compatibilidades));
-		accesorios.add(new Joystick("Red Dragon 2020", TipoConexion.CABLE, compatibilidades));
-		accesorios.add(new Mouse("Red Dragon M 2020", TipoConexion.INFRARROJO, compatibilidades));
-		accesorios.add(new Teclado("NogaNet 500", TipoConexion.BLUETOOTH, compatibilidades));
+		accesorios.add(new Joystick("Red Dragon 2020", TipoConexion.CABLE, compatibilidades, 100));
+		accesorios.add(new Mouse("Red Dragon M 2020", TipoConexion.INFRARROJO, compatibilidades, 100));
+		accesorios.add(new Teclado("NogaNet 500", TipoConexion.BLUETOOTH, compatibilidades, 100));
 		for (Accesorio accesorio : accesorios) {
 			System.out.println(accesorio.mostrarDetalle());
 		}

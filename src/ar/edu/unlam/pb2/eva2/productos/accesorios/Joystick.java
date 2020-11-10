@@ -9,11 +9,12 @@ public class Joystick extends Accesorio {
 		this.setTieneAnalogico(false);
 	}
 
-	public Joystick(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+	public Joystick(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades, Integer stock) {
 		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setTieneAnalogico(false);
+		this.setStock(stock);
 	}
 
 	@Override

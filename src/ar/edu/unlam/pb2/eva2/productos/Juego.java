@@ -4,9 +4,11 @@ public class Juego extends Producto {
 
 	private Formato formato;
 
-	public Juego(String nombre, Double precio, Fabricante fabricante, Formato formato) {
+	public Juego(String nombre, Double precio,Fabricante fabricante, Formato formato, Integer stock) {
+		super();
 		setNombre(nombre);
 		setPrecio(precio);
+		setStock(stock);
 		setFabricante(fabricante);
 		setFormato(formato);
 	}
