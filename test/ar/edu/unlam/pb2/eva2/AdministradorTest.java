@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,23 +48,29 @@ public class AdministradorTest {
 	
 	@Test
 	public void queSePuedaAgregarUnProducto() {
-		Administrador admin = new Administrador("barraza.f@gmail.com", "00asssdd22");
+		Administrador admin = new Administrador("surace.l@gmail.com", "asssdd22");
 		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL, 100);
-		
+		tienda.login("barraza.f@gmail.com", "00asssdd22");
 		assertTrue(tienda.agregarProducto(j1, admin));
 	}
 	
 	@Test
 	public void queNoSePuedaAgregarUnProductoDosVeces() {
-		Administrador admin = new Administrador("barraza.f@gmail.com", "00asssdd22");
+		Administrador admin = new Administrador("surace.l@gmail.com", "asssdd22");
 		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL, 100);
-		
+		tienda.login("barraza.f@gmail.com", "00asssdd22");
 		assertTrue(tienda.agregarProducto(j1, admin));
 		assertFalse(tienda.agregarProducto(j1, admin));
 	}
 	
 	@Test
 	public void queSePuedaModificarElStockDeLosProductos() {
+		Administrador admin = new Administrador("surace.l@gmail.com", "asssdd22");
+		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL, 100);
+		tienda.login("barraza.f@gmail.com", "00asssdd22");
 		
+		Integer nuevoStock = 500;
+		tienda.cambiarStock(nuevoStock, admin, j1);
+		assertEquals(j1.getStock(),nuevoStock, 0.0);
 	}
 }

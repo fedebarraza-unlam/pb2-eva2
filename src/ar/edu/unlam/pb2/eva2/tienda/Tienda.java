@@ -43,19 +43,33 @@ public class Tienda {
 		return null;
 	}
 	
+	public Boolean buscarUsuario(Persona buscar) {
+		for(Persona persona : this.personasRegistradas) {
+			if(persona.equals(buscar)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public Boolean agregarProducto(Producto nuevo, Administrador admin) {
-		if(admin.getLogin()) {
-			return this.productos.add(nuevo);
+		if(buscarUsuario(admin)) {
+			if(admin.getLogin()) {
+				System.out.println("Hola otra vez");
+				return this.productos.add(nuevo);
+			}
 		}
 		return false;
 	}
 	
 	public Boolean cambiarStock(Integer nuevoStock, Administrador admin, Producto cambiar) {
-		if(admin.getLogin()) {
-			for(Producto producto : this.productos) {
-				if(producto.equals(cambiar)) {
-					producto.setStock(nuevoStock);
-					return true;
+		if(buscarUsuario(admin)) {
+			if(admin.getLogin()) {
+				for(Producto producto : this.productos) {
+					if(producto.equals(cambiar)) {
+						producto.setStock(nuevoStock);
+						return true;
+					}
 				}
 			}
 		}
