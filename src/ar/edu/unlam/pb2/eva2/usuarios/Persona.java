@@ -7,12 +7,16 @@ public abstract class Persona {
 	private Boolean login;
 	private RolUsuario rol;
 
-	public Persona(String nombre, String apellido, String password, String passwordReset) {
-		setNombre(nombre);
-		setApellido(apellido);
-		setPassword(password);
+	public Persona(String password) {
+		this.setPassword(password);
 		this.login = false;
-		this.rol = RolUsuario.USUARIO;
+	}
+
+	public Persona(String password, String nombre, String apellido) {
+		this.setPassword(password);
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		this.login = false;
 	}
 
 	public String getNombre() {
@@ -42,7 +46,7 @@ public abstract class Persona {
 	public void setRol(RolUsuario rol) {
 		this.rol = rol;
 	}
-	
+
 	public RolUsuario getRol() {
 		return this.rol;
 	}
@@ -51,7 +55,9 @@ public abstract class Persona {
 		return this.login;
 	}
 
-	public void cambiarLogin() {
-		this.login = !this.login;
+	public void setLogin(Boolean login) {
+		this.login = login;
 	}
+
+	public abstract String getID();
 }

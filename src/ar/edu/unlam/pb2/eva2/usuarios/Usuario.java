@@ -1,72 +1,65 @@
 package ar.edu.unlam.pb2.eva2.usuarios;
 
-import java.util.HashSet;
 import ar.edu.unlam.pb2.eva2.productos.Producto;
 
 public class Usuario extends Persona {
 	private String email;
-	private HashSet<Persona> usuarios;
-	private Boolean logueado;
 	private Carrito carrito;
-	private Boolean registrado;
 
-	public Usuario(String nombre, String apellido, String password, String passwordReset, String email) {
-		super(nombre, apellido, password, passwordReset);
-		this.email = email;
-		this.usuarios = new HashSet<>();
+	public Usuario(String email, String password) {
+		super(password);
+		this.setEmail(email);
+		this.setRol(RolUsuario.USUARIO);
 		this.carrito = new Carrito();
-		this.logueado = false;
-		this.registrado = false;
 	}
 
-	public Boolean register(Usuario user) {
-		this.registrado = true;
-		return this.usuarios.add(user);
+	public Usuario(String email, String password, String nombre, String apellido) {
+		super(password, nombre, apellido);
+		this.setEmail(email);
+		this.setRol(RolUsuario.USUARIO);
+		this.carrito = new Carrito();
 	}
 
-	public Boolean login(String email, String password) {
-		if (this.registrado) {
-			if (this.getPassword().equals(password) && this.email.equals(email)) {
-				this.logueado = true;
-				return true;
-			}
-		}
-		return false;
+	@Override
+	public String getID() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Boolean agregarProductoAlCarrito(Producto producto) {
-		if (logueado) {
-			this.carrito.cargarProducto(producto);
-			return this.logueado;
+		if (this.getLogin()) {
+			return this.carrito.cargarProducto(producto);
 		}
 		return false;
 	}
 
 	public void removerProductoDelCarrito(Producto producto) {
-		if (logueado) {
+		if (this.getLogin()) {
 			this.carrito.removerProducto(producto);
 		}
 	}
-	
+
 	public String verDetalleDelProducto() {
-		if(logueado) {
+		if (this.getLogin()) {
 			return "[Importe total: " + carrito.getImporteTotal() + "]";
-		} else
-			return "No se encuentra logueado";
+		}
+		return "No se encuentra logueado";
 	}
-	
+
 	public Integer getCantidadDeProductosEnElCarrito() {
-		if(logueado) {
+		if (this.getLogin()) {
 			return this.carrito.contadorDeProductos();
-		} else
-			return 0;
+		}
+		return 0;
 	}
 
 	public Double getImporteTotal() {
-		if(logueado) {
+		if (this.getLogin()) {
 			return this.carrito.getImporteTotal();
-		} else
-			return 0.0;		
+		}
+		return 0.0;
 	}
-	
 }

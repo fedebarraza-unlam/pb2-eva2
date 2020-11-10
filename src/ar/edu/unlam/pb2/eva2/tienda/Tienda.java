@@ -6,36 +6,38 @@ import java.util.HashSet;
 import ar.edu.unlam.pb2.eva2.usuarios.Administrador;
 import ar.edu.unlam.pb2.eva2.usuarios.Consulta;
 import ar.edu.unlam.pb2.eva2.usuarios.Persona;
-import ar.edu.unlam.pb2.eva2.usuarios.RolUsuario;
 
 public class Tienda {
-	private HashSet<Persona> usuarios = new HashSet<>();
-	private ArrayList<Consulta> consultas = new ArrayList<>();
+	private String nombre;
+	private HashSet<Persona> personasRegistradas;
+	private ArrayList<Consulta> consultas;
 
-	public Boolean register(Persona nuevo) {
-		return this.usuarios.add(nuevo);
+	public Tienda(String nombre) {
+		this.setNombre(nombre);
+		this.personasRegistradas = new HashSet<Persona>();
+		this.consultas = new ArrayList<Consulta>();
 	}
 
-	/*
-	 * public Usuario loginUsuario(String email, String password) { for(Usuario
-	 * usuario: this.usuarios) { if(usuario.getEmail.equals(email) &&
-	 * usuario.getPassword.equals(password)) { usuario.cambiarLogin(); return
-	 * usuario; } } return null; } Este método en teoría es funcional, lo comenté
-	 * porque me tira errores ya que no tengo la clase Usuario creada
-	 */
+	public String getNombre() {
+		return nombre;
+	}
 
-	public Boolean loginAdministrador(Integer DNI, String password) {
-		for (Persona administrador : this.usuarios) {
-			if (administrador.getRol() == RolUsuario.ADMINISTRADOR) {
-				Administrador admin = (Administrador) administrador;
-				if (admin.getDNI() == DNI && admin.getPassword().equals(password)) {
-					admin.cambiarLogin();
-					return true;
-				}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Boolean registrar(Persona nuevo) {
+		return this.personasRegistradas.add(nuevo);
+	}
+
+	public Persona login(String id, String password) {
+		for (Persona persona : this.personasRegistradas) {
+			if (persona.getID().equals(id) && persona.getPassword().equals(password)) {
+				persona.setLogin(true);
+				return persona;
 			}
-			return false;
 		}
-		return false;
+		return null;
 	}
 
 	public ArrayList<Consulta> leerConsultas(Administrador admin) {

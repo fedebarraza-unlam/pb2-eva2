@@ -2,41 +2,26 @@ package ar.edu.unlam.pb2.eva2.usuarios;
 
 public class Administrador extends Persona {
 
-	private Integer DNI;
+	private String codigoLegajo;
 
-	public Administrador(String nombre, String apellido, String password, String passwordReset, Integer DNI) {
-		super(nombre, apellido, password, passwordReset);
+	public Administrador(String codigoLegajo, String password) {
+		super(password);
+		this.setCodigoLegajo(codigoLegajo);
 		this.setRol(RolUsuario.ADMINISTRADOR);
-		this.DNI = DNI;
-	}
-
-	public Integer getDNI() {
-		return DNI;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Administrador other = (Administrador) obj;
-		if (DNI == null) {
-			if (other.DNI != null)
-				return false;
-		} else if (!DNI.equals(other.DNI))
-			return false;
-		return true;
 	}
 	
+	public Administrador(String codigoLegajo, String password, String nombre, String apellido) {
+		super(password, nombre, apellido);
+		this.setCodigoLegajo(codigoLegajo);
+		this.setRol(RolUsuario.ADMINISTRADOR);
+	}
+
+	@Override
+	public String getID() {
+		return this.codigoLegajo;
+	}
+	
+	public void setCodigoLegajo(String codigoLegajo) {
+		this.codigoLegajo = codigoLegajo;
+	}
 }
