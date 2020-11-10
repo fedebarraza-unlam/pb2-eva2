@@ -7,6 +7,7 @@ import ar.edu.unlam.pb2.eva2.productos.Producto;
 import ar.edu.unlam.pb2.eva2.usuarios.Administrador;
 import ar.edu.unlam.pb2.eva2.usuarios.Consulta;
 import ar.edu.unlam.pb2.eva2.usuarios.Persona;
+import ar.edu.unlam.pb2.eva2.usuarios.Usuario;
 
 public class Tienda {
 	private String nombre;
@@ -61,7 +62,6 @@ public class Tienda {
 
 	public Boolean agregarProducto(Producto nuevo, Administrador admin) {
 		if (existePersona(admin) && admin.getLogin()) {
-			System.out.println("Hola otra vez");
 			return this.productos.add(nuevo);
 		}
 		return false;
@@ -87,9 +87,17 @@ public class Tienda {
 		}
 		return false;
 	}
+	
+	public Boolean crearConsulta(Usuario user, String descripcion) {
+		if(existePersona(user) && user.getLogin()) {
+			Consulta nuevo = new Consulta(user.getID(), descripcion);
+			return this.consultas.add(nuevo);
+		}
+		return false;
+	}
 
 	public ArrayList<Consulta> leerConsultas(Administrador admin) {
-		if (admin.getLogin()) {
+		if (existePersona(admin) && admin.getLogin()) {
 			return consultas;
 		}
 		return null;

@@ -23,7 +23,7 @@ public class Consulta {
 	}
 	
 	public String toString() {
-		String mensaje = "Nombre del usuario: " + getNombreUsuario() + "\n" +
+		String mensaje = "Usuario: " + getNombreUsuario() + "\n" +
 				"Consulta: " + getDescripcion() + "\n";
 		return mensaje;
 	}
