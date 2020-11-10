@@ -11,6 +11,7 @@ public abstract class Accesorio extends Producto {
 	private String colores;
 
 	public Accesorio() {
+		super();
 		this.tipoConexion = TipoConexion.CABLE;
 		this.compatibilidades = new ArrayList<Compatibilidad>();
 		this.setColores("N/A");

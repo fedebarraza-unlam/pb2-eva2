@@ -10,6 +10,7 @@ public class Consola extends Producto {
 	private Collection<Accesorio> accesorios;
 
 	public Consola(String nombre, Double precio, Fabricante fabricante, Integer stock) {
+		super();
 		setNombre(nombre);
 		setPrecio(precio);
 		setStock(stock);

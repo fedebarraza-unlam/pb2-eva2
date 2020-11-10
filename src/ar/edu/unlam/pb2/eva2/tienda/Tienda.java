@@ -21,6 +21,13 @@ public class Tienda {
 		this.productos = new HashSet<Producto>();
 	}
 
+	public Tienda(String nombre, HashSet<Persona> personas, HashSet<Producto> productos) {
+		this.setNombre(nombre);
+		this.productos = productos;
+		this.personasRegistradas = personas;
+		this.consultas = new ArrayList<Consulta>();
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -42,34 +49,39 @@ public class Tienda {
 		}
 		return null;
 	}
-	
-	public Boolean buscarUsuario(Persona buscar) {
-		for(Persona persona : this.personasRegistradas) {
-			if(persona.equals(buscar)) {
+
+	public Boolean existePersona(Persona buscar) {
+		for (Persona persona : this.personasRegistradas) {
+			if (persona.equals(buscar)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	public Boolean agregarProducto(Producto nuevo, Administrador admin) {
-		if(buscarUsuario(admin)) {
-			if(admin.getLogin()) {
-				System.out.println("Hola otra vez");
-				return this.productos.add(nuevo);
-			}
+		if (existePersona(admin) && admin.getLogin()) {
+			System.out.println("Hola otra vez");
+			return this.productos.add(nuevo);
 		}
 		return false;
 	}
-	
+
+	public Producto obtenerProducto(String nombre) {
+		for (Producto producto : this.productos) {
+			if (producto.getNombre().equalsIgnoreCase(nombre)) {
+				return producto;
+			}
+		}
+		return null;
+	}
+
 	public Boolean cambiarStock(Integer nuevoStock, Administrador admin, Producto cambiar) {
-		if(buscarUsuario(admin)) {
-			if(admin.getLogin()) {
-				for(Producto producto : this.productos) {
-					if(producto.equals(cambiar)) {
-						producto.setStock(nuevoStock);
-						return true;
-					}
+		if (existePersona(admin) && admin.getLogin()) {
+			for (Producto producto : this.productos) {
+				if (producto.equals(cambiar)) {
+					producto.setStock(nuevoStock);
+					return true;
 				}
 			}
 		}
