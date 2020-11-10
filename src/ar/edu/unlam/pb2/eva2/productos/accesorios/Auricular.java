@@ -5,21 +5,23 @@ import java.util.ArrayList;
 public class Auricular extends Accesorio {
 	private Double potenciaDeSalida;
 
-	public Auricular(Double precio) {
+	public Auricular(Double precio, Integer stock) {
 		this.setTipoConexion(TipoConexion.BLUETOOTH);
 		this.setCompatibilidades(null);
 		this.setColores("Verde");
 		this.setPotenciaDeSalida(500.4);
 		this.setPrecio(precio);
+		this.setStock(stock);
 	}
 
 	public Auricular(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades,
-			String colores, Double precio, Double potenciaDeSalida) {
+			String colores, Double precio, Double potenciaDeSalida, Integer stock) {
 		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setColores(colores);
 		this.setPrecio(precio);
+		this.setStock(stock);
 		this.setPotenciaDeSalida(potenciaDeSalida);
 	}
 

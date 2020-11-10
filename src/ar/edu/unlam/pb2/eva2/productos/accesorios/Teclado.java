@@ -11,13 +11,14 @@ public class Teclado extends Accesorio {
 		this.setTieneNumerico(true);
 	}
 	
-	public Teclado(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+	public Teclado(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades, Integer stock) {
 		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setColores("Negro");
 		this.setIdioma("Castellano");
 		this.setTieneNumerico(true);
+		this.setStock(stock);
 	}
 
 	@Override

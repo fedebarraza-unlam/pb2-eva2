@@ -55,14 +55,22 @@ public class UsuarioTest {
 		// Login correcto
 		Usuario fede = (Usuario) tienda.login("barraza.f@gmail.com", "00asssdd22");
 		assertNotNull(fede);
+		Usuario lucas = (Usuario) tienda.login("surace.l@gmail.com", "asssdd22");
 
-		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL);
-		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY);
+		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL, 100);
+		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY, 100);
 		assertTrue(fede.agregarProductoAlCarrito(j1)); // Agrega productos
 		assertTrue(fede.agregarProductoAlCarrito(ps5));
+		assertTrue(lucas.agregarProductoAlCarrito(ps5));
+		Integer nuevoStockJuego = j1.getStock();
+		Integer nuevoStockConsola = ps5.getStock();
+		assertEquals(99, nuevoStockJuego);
+		assertEquals(98, nuevoStockConsola);
 
 		fede.removerProductoDelCarrito(ps5); // Remueve el producto.
-
+		nuevoStockConsola = ps5.getStock();
+		assertEquals(99, nuevoStockConsola);
+		
 		Integer productosEnCarrito = 1;
 		assertEquals(productosEnCarrito, fede.getCantidadDeProductosEnElCarrito());
 	}
@@ -73,8 +81,8 @@ public class UsuarioTest {
 		Usuario dami = (Usuario) tienda.login("marin.d@gmail.com", "asssdsdd22");
 		assertNotNull(dami);
 
-		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL);
-		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY);
+		Juego j1 = new Juego("Demon Souls", 3900.0, Fabricante.SONY, Formato.DIGITAL, 100);
+		Consola ps5 = new Consola("Play Station 5", 70000.0, Fabricante.SONY, 100);
 
 		assertTrue(dami.agregarProductoAlCarrito(j1));
 		assertTrue(dami.agregarProductoAlCarrito(ps5));

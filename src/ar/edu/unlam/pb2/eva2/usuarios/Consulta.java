@@ -21,4 +21,10 @@ public class Consulta {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public String toString() {
+		String mensaje = "Nombre del usuario: " + getNombreUsuario() + "\n" +
+				"Consulta: " + getDescripcion() + "\n";
+		return mensaje;
+	}
 }

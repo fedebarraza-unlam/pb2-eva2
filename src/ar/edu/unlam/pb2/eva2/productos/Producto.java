@@ -4,6 +4,7 @@ public abstract class Producto {
 
 	private String nombre;
 	private Double precio;
+	private Integer stock;
 	private Fabricante fabricante;
 
 	public String getNombre() {
@@ -22,7 +23,19 @@ public abstract class Producto {
 		this.precio = precio;
 	}
 
-
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+	
+	public Integer getStock() {
+		return this.stock;
+	}
+	
+	public Integer updateStock(Integer valor) {
+		this.stock += valor;
+		return getStock();
+	}
+	
 	public Fabricante getFabricante() {
 		return fabricante;
 	}

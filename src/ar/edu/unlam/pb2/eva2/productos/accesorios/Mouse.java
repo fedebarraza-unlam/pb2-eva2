@@ -9,11 +9,12 @@ public class Mouse extends Accesorio {
 		this.setBotonesAdicionales(0);
 	}
 	
-	public Mouse(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades) {
+	public Mouse(String nombre, TipoConexion tipoConexion, ArrayList<Compatibilidad> compatibilidades, Integer stock) {
 		this.setNombre(nombre);
 		this.setTipoConexion(tipoConexion);
 		this.setCompatibilidades(compatibilidades);
 		this.setBotonesAdicionales(0);
+		this.setStock(stock);
 	}
 
 	@Override

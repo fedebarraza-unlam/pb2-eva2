@@ -31,7 +31,11 @@ public class Usuario extends Persona {
 
 	public Boolean agregarProductoAlCarrito(Producto producto) {
 		if (this.getLogin()) {
-			return this.carrito.cargarProducto(producto);
+			if(this.carrito.cargarProducto(producto)) {
+				Integer nuevoStock = -1;
+				producto.updateStock(nuevoStock);
+			}
+			return true;
 		}
 		return false;
 	}
@@ -39,6 +43,8 @@ public class Usuario extends Persona {
 	public void removerProductoDelCarrito(Producto producto) {
 		if (this.getLogin()) {
 			this.carrito.removerProducto(producto);
+			Integer nuevoStock = 1;
+			producto.updateStock(nuevoStock);
 		}
 	}
 
